@@ -5,13 +5,13 @@
 #include <string>
 using namespace std;
 
-void firstInFirstOut(int k, vector<string> requests, ofstream& outfile){
-    queue<string> cache;
+void firstInFirstOut(int k, vector<int> requests, ofstream& outfile){
+    queue<int> cache;
     int numMisses = 0;
 
     for(int i = 0; i < requests.size(); i++){
         // searching for item in cache
-        queue<string> temp(cache);
+        queue<int> temp(cache);
         bool found = false;
         while(!temp.empty()){
             if(temp.front() == requests[i]){
