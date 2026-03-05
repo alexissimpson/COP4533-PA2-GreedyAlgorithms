@@ -16,11 +16,12 @@ map<int, queue<int>> handleInput(vector<int>& requests){
 }
 
 void farthestInTheFuture(int k, vector<int> requests, ofstream& outfile) {
+    cout << "OPTFF..." << endl;
     map<int, queue<int>> requestIndices = handleInput(requests);
     set<int> cache;
     int numMisses = 0;
 
-    for(int request : requestIndices){
+    for(int request : requests){
         // remove current request index from its queue
         requestIndices[request].pop();
 

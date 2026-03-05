@@ -6,6 +6,7 @@
 using namespace std;
 
 void firstInFirstOut(int k, vector<int> requests, ofstream& outfile){
+    cout << "FIFO..." << endl;
     queue<int> cache;
     int numMisses = 0;
 

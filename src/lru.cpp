@@ -19,6 +19,7 @@ class Node{
 };
 
 void leastRecentlyUsed(int k, vector<int> requests, ofstream& outfile){
+	cout << "LRU..." << endl;
     // first request will be a miss, initialize head/tail
     int numMisses = 1;
     int cacheSize = 1;
@@ -35,17 +36,18 @@ void leastRecentlyUsed(int k, vector<int> requests, ofstream& outfile){
                 // remove node from current position
                 if(curNode->prev != nullptr){
                     curNode->prev->next = curNode->next;
-                }
-                if(curNode->next != nullptr) {
-                    curNode->next->prev = curNode->prev;
-                }
+                	if(curNode->next != nullptr) {
+                    	curNode->next->prev = curNode->prev;
+                	} else{
+						tail = curNode->prev;
+					}
 
-                // move node to head
-                head->prev = curNode;
-                curNode->next = head;
-                curNode->prev = nullptr;
-                head = curNode;
-                break;
+                	head->prev = curNode;
+                	curNode->next = head;
+                	curNode->prev = nullptr;
+                	head = curNode;
+                	break;
+				}
             }
             curNode = curNode->next;
         }
@@ -54,9 +56,12 @@ void leastRecentlyUsed(int k, vector<int> requests, ofstream& outfile){
             // if cache is full, remove tail (least recently used)
             if(cacheSize >= k){
                 Node* newTail = tail->prev;
-                newTail->next = nullptr;
+				if(newTail != nullptr){
+					newTail->next = nullptr;
+				}
                 delete tail;
                 tail = newTail;
+				cacheSize--;
             }
             // insert new node
             cacheSize++;

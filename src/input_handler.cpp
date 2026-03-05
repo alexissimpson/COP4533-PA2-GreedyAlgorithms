@@ -8,6 +8,7 @@
 using namespace std;
 
 void handleInput(string filename){
+    cout << "Handling Input..." << endl;
     ofstream outfile("../data/output/OUTPUT.txt");
     ifstream infile("../data/input/" + filename);
     string line;
@@ -18,12 +19,12 @@ void handleInput(string filename){
         return;
     }
     stringstream ss(line);
-    string k;
-    getline(ss, k, ' ');
-    int k = stoi(k);
-    string m;
-    getline(ss, m, ' ');
-    int m = stoi(m);
+    string kStr;
+    getline(ss, kStr, ' ');
+    int k = stoi(kStr);
+    string mStr;
+    getline(ss, mStr, ' ');
+    int m = stoi(mStr);
 
     // storing requests
     if(!getline(infile, line)){
