@@ -4,4 +4,4 @@
 #include <fstream>
 using namespace std;
 
-void farthestInTheFuture(int k, vector<string> requests, ofstream& outfile);
+void farthestInTheFuture(int k, vector<int> requests, ofstream& outfile);
