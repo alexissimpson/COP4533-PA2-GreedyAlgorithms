@@ -76,3 +76,20 @@ Example sequence: 1 4 5 3 2 4 2 1 1 3
 This request sequence shows that there does exist a request sequence with k=3 for which OPTFF incures strictly fewer misses than LRU and FIFO. This sequence uses k=3, m=10 and has the requests as shown above. When you run each cache eviction policy, OPTFF incurs only 6 misses while LRU and FIFO both had only 8 misses.
 
 ### 3. Prove OPTFF is Optimal
+Let A be any offline algorithm that knows the full request sequence.  
+#### Base Case:
+Both caches are empty and misses<sub>OPTFF</sub> = misses<sub>A</sub>.  
+#### Inductive Step:
+Assume there exists an algorithm A' that agrees with OPTFF for requests r<sub>1</sub> through r<sub>i</sub> with misses<sub>A'</sub> $\le$ misses<sub>A</sub>.  
+Consider request r<sub>i+1</sub> for caches OPTFF and A':
+- Case 1: Both algorithms have a cache hit
+  - Caches remain identical, misses<sub>A'</sub> = misses<sub>OPTFF</sub>
+- Case 2: Both algorithms have a cache miss and evict the same data
+  - Caches remain identical, misses<sub>A'</sub> = misses<sub>OPTFF</sub>
+- Case 3: Both algorithms have a cache miss and evict different data
+  - Let m be the data evicted by OPTFF and n be the data evicted by A'
+  - Let A'' be an algorithm with identical behavior to A' but at request r<sub>i+1</sub> A'' evicts m instead of n
+  - A'' has identical cache contents to OPTFF through r<sub>i+1</sub>
+  - Since OPTFF chose m, it follows that n is requested before m
+  - When n is next requested, A'' hits and A' misses
+  - misses<sub>A''</sub> $\le$ misses<sub>A'</sub>
