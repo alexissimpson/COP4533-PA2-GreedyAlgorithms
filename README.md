@@ -52,6 +52,15 @@ Example output for running test_input1.txt is located in test_output1.txt at /da
 
 ## Written Component:
 ### 1. Empirical Comparison
+| Input File      | k | m | FIFO | LRU | OPTFF |
+|:---------------:|:-:|:-:|:----:|:---:|:-----:|
+| input_file1.txt |10 |60 |  51  | 51  |  41   |
+| input_file2.txt | 5 |75 |  52  | 55  |  32   |
+| input_file3.txt | 8 |80 |  42  | 45  |  28   |
+
+For each of the test files above, OPTFF had significantly fewest misses.
+
+FIFO consistently had fewer misses than LRU but the difference in misses wasn't as large as the difference between the misses for these eviction policies and OPTFF.
 
 ### 2. Bad Sequence for LRU or FIFO
 
