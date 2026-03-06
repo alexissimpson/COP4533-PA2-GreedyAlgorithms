@@ -63,5 +63,13 @@ For each of the test files above, OPTFF had significantly fewest misses.
 FIFO consistently had fewer misses than LRU but the difference in misses wasn't as large as the difference between the misses for these eviction policies and OPTFF.
 
 ### 2. Bad Sequence for LRU or FIFO
+For k = 3, there exists a request sequence for which OPTFF incurs strictly fewer misses than LRU and FIFO.
+
+Example sequence: 1 4 5 3 2 4 2 1 1 3
+OPTFF: 6 misses
+LRU: 8 misses
+FIFO: 8 misses
+
+This request sequence shows that there does exist a request sequence with k=3 for which OPTFF incures strictly fewer misses than LRU and FIFO. This sequence uses k=3, m=10 and has the requests as shown above. When you run each cache eviction policy, OPTFF incurs only 6 misses while LRU and FIFO both had only 8 misses.
 
 ### 3. Prove OPTFF is Optimal
