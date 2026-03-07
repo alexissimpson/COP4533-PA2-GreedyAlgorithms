@@ -84,9 +84,9 @@ Assume there exists an algorithm A' that agrees with OPTFF for requests r<sub>1<
 #### Inductive Step:
 Consider request r<sub>i+1</sub> for caches OPTFF and A':
 - Case 1: Both algorithms have a cache hit
-  - Caches remain identical, misses<sub>A'</sub> = misses<sub>OPTFF</sub>
+  - Caches remain identical, misses<sub>OPTFF</sub> = misses<sub>A'</sub> $\le$ misses<sub>A</sub>
 - Case 2: Both algorithms have a cache miss and evict the same data
-  - Caches remain identical, misses<sub>A'</sub> = misses<sub>OPTFF</sub>
+  - Caches remain identical, misses<sub>OPTFF</sub> = misses<sub>A'</sub> $\le$ misses<sub>A</sub>
 - Case 3: Both algorithms have a cache miss and evict different data
   - Let m be the data evicted by OPTFF and n be the data evicted by A'
   - Let A'' be an algorithm with identical behavior to A' but at request r<sub>i+1</sub> A'' evicts m instead of n
@@ -95,7 +95,7 @@ Consider request r<sub>i+1</sub> for caches OPTFF and A':
   - Until n is requested, A'' and A' have the same behavior
   - Case 3a: A'' evicts n before n was requested
     - A'' and A' have the same contents
-    - When n is requested, neither has missed more than the other so it remains that misses<sub>A''</sub> $\le$ misses<sub>A'</sub>
+    - When n is requested, neither has missed more than the other so it remains that misses<sub>OPTFF</sub> = misses<sub>A''</sub> $\le$ misses<sub>A'</sub> $\le$ misses<sub>A</sub>
   - Case 3b: A'' doesn't evict n before n was requested
     - A'' holds n while A' doesn't, so A'' hits when n is requested wherea A' misses
-    - A' misses once more than A', so it remains that misses<sub>A''</sub> $\le$ misses<sub>A'</sub>
+    - A' misses once more than A', so it remains that misses<sub>OPTFF</sub> = misses<sub>A''</sub> $\le$ misses<sub>A'</sub> $\le$ misses<sub>A</sub>
