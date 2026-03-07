@@ -92,5 +92,10 @@ Consider request r<sub>i+1</sub> for caches OPTFF and A':
   - Let A'' be an algorithm with identical behavior to A' but at request r<sub>i+1</sub> A'' evicts m instead of n
   - A'' has identical cache contents to OPTFF through r<sub>i+1</sub>
   - Since OPTFF chose m, it follows that n is requested before m
-  - When n is next requested, A'' hits and A' misses
-  - misses<sub>A''</sub> $\le$ misses<sub>A'</sub>
+  - Until n is requested, A'' and A' have the same behavior
+  - Case 3a: A'' evicts n before n was requested
+    - A'' and A' have the same contents
+    - When n is requested, neither has missed more than the other so it remains that misses<sub>A''</sub> $\le$ misses<sub>A'</sub>
+  - Case 3b: A'' doesn't evict n before n was requested
+    - A'' holds n while A' doesn't, so A'' hits when n is requested wherea A' misses
+    - A' misses once more than A', so it remains that misses<sub>A''</sub> $\le$ misses<sub>A'</sub>
