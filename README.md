@@ -79,7 +79,7 @@ This request sequence shows that there does exist a request sequence with k=3 fo
 Let A be any offline algorithm that knows the full request sequence.  
 #### Base Case:
 Both caches are empty and misses<sub>OPTFF</sub> = misses<sub>A</sub>.  
-#### Inductive Step:
+#### Inductive Hypothesis:
 Assume there exists an algorithm A' that agrees with OPTFF for requests r<sub>1</sub> through r<sub>i</sub> with misses<sub>A'</sub> $\le$ misses<sub>A</sub>.  
 #### Inductive Step:
 Consider request r<sub>i+1</sub> for caches OPTFF and A':
