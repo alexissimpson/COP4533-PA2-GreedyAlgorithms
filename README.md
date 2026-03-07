@@ -81,6 +81,7 @@ Let A be any offline algorithm that knows the full request sequence.
 Both caches are empty and misses<sub>OPTFF</sub> = misses<sub>A</sub>.  
 #### Inductive Step:
 Assume there exists an algorithm A' that agrees with OPTFF for requests r<sub>1</sub> through r<sub>i</sub> with misses<sub>A'</sub> $\le$ misses<sub>A</sub>.  
+#### Inductive Step:
 Consider request r<sub>i+1</sub> for caches OPTFF and A':
 - Case 1: Both algorithms have a cache hit
   - Caches remain identical, misses<sub>A'</sub> = misses<sub>OPTFF</sub>
